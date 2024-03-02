@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import AddTodoForm from './AddTodoForm'; // Adjust path as necessary
-import TodoItem from './TodoItem'; // Adjust path as necessary
-import '../pages/TodoList.css'; // Ensure the CSS file is correctly linked
+import AddTodoForm from './AddTodoForm';
+import TodoItem from './TodoItem';
+import '../pages/TodoList.css';
 
 function TodoList() {
   const [todos, setTodos] = useState([]);
@@ -10,7 +10,6 @@ function TodoList() {
 
   const fetchTodos = async () => {
     try {
-      // Directly calling the API without setting Authorization header
       const response = await axios.get('http://localhost:5000/api/todos');
       setTodos(response.data);
     } catch (error) {
@@ -25,9 +24,8 @@ function TodoList() {
 
   const toggleCompleted = async (id, completed) => {
     try {
-      // Direct call without Authorization header
       await axios.patch(`http://localhost:5000/api/todos/${id}`, { completed: !completed });
-      fetchTodos(); // Refetch todos to update the state
+      fetchTodos();
     } catch (error) {
       console.error('Failed to update todo:', error);
     }

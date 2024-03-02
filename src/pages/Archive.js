@@ -18,6 +18,11 @@ function Archive() {
     };
 
     fetchCompletedTodos();
+    
+    // Set up polling here
+    const interval = setInterval(fetchCompletedTodos, 5000); // Poll every 5 seconds
+
+    return () => clearInterval(interval); // Cleanup on component unmount
   }, []);
 
   return (
