@@ -1,0 +1,21 @@
+.archive-container {
+    padding: 20px;
+  }
+  
+  .archive-list {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .archive-item {
+    background-color: #f0f0f0;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 5px;
+  }
+  
+  .archive-item span {
+    display: block;
+    margin-bottom: 5px;
+  }
+  

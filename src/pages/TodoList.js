@@ -1,17 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import AddTodoForm from './AddTodoForm'; // Adjust path as necessary
-import TodoItem from './TodoItem'; // Adjust path as necessary
-import '../pages/TodoList.css'; // Ensure the CSS file is correctly linked
+import { Link } from 'react-router-dom';
+import AddTodoForm from '../components/AddTodoForm';
+import TodoItem from '../components/TodoItem';
+import './TodoList.css';
 
-function TodoList() {
+function TodoListPage() {
   const [todos, setTodos] = useState([]);
   const [error, setError] = useState('');
 
+  // Define fetchTodos outside of useEffect so it can be used in toggleCompleted as well
   const fetchTodos = async () => {
     try {
-      // Directly calling the API without setting Authorization header
-      const response = await axios.get('http://localhost:5000/api/todos');
+      const response = await axios.get('http://localhost:5000/api/todos', {
+        withCredentials: true,
+      });
       setTodos(response.data);
     } catch (error) {
       console.error('Failed to fetch todos:', error);
@@ -25,8 +28,9 @@ function TodoList() {
 
   const toggleCompleted = async (id, completed) => {
     try {
-      // Direct call without Authorization header
-      await axios.patch(`http://localhost:5000/api/todos/${id}`, { completed: !completed });
+      await axios.patch(`http://localhost:5000/api/todos/${id}`, { completed: !completed }, {
+        withCredentials: true,
+      });
       fetchTodos(); // Refetch todos to update the state
     } catch (error) {
       console.error('Failed to update todo:', error);
@@ -37,14 +41,15 @@ function TodoList() {
     <div className="todo-list-page">
       <h2>Todo List</h2>
       <AddTodoForm onTodoAdded={fetchTodos} />
-      {error && <p className="alert alert-danger">{error}</p>}
+      {error && <p style={{ color: 'red' }}>{error}</p>}
       <ul className="todo-list">
         {todos.map(todo => (
           <TodoItem key={todo._id} todo={todo} onToggleCompleted={toggleCompleted} />
         ))}
       </ul>
+      <Link to="/archive" className="btn btn-secondary">Archive</Link>
     </div>
   );
 }
 
-export default TodoList;
+export default TodoListPage;

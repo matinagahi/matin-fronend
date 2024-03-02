@@ -1,0 +1,107 @@
+/* Style adjustments for the TodoList page, inputs, select dropdown, and button */
+
+/* Adjustments for input and select fields to match in size */
+.add-todo-form input,
+.add-todo-form select {
+  height: 38px; /* Adjust the height to match */
+  padding: 8px 12px; /* Adjust padding to ensure text alignment and field size */
+  font-size: 16px; /* Ensure font size is consistent */
+  width: calc(100% - 24px); /* Adjust width if necessary, considering padding and border */
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+/* Styling adjustments for the button to ensure consistency */
+.add-todo-form button {
+  height: 38px; /* Match the height of input and select */
+  padding: 8px 12px; /* Consistent padding */
+  font-size: 16px; /* Matching font size */
+  width: 100%;
+  margin-top: 10px; /* Adjust margin as needed */
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.add-todo-form button:hover {
+  background-color: #0056b3;
+}
+
+/* Specific styles for the importance dropdown to include a custom arrow */
+.add-todo-form select {
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="%23ffffff" d="M7 10l5 5 5-5z"/></svg>') no-repeat;
+  background-position: right 10px center;
+  background-size: 12px;
+}
+
+.todo-list-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+  }
+  
+  .add-todo-form {
+    width: 400px;
+    margin-bottom: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    border-radius: 5px;
+  }
+  
+  .add-todo-form input,
+  .add-todo-form select,
+  .add-todo-form button {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+  
+  .add-todo-form button {
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    border: none;
+  }
+  
+  .add-todo-form button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Customizing the dropdown arrow */
+  .add-todo-form select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="%23fff" d="M7 10l5 5 5-5z"/></svg>') no-repeat;
+    background-position: right 10px center;
+    background-size: 12px;
+  }
+  
+  .todo-list {
+    list-style: none;
+    padding: 0;
+    width: 400px;
+  }
+  
+  .todo-item {
+    background-color: #f9f9f9;
+    border: 1px solid #eee;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+  }
+  
+  .todo-item.completed {
+    background-color: #e9ffe9;
+  }
+  
